@@ -8,7 +8,7 @@ Yii2 + Docker example
 + Install yi2 basic app `composer create-project --prefer-dist yiisoft/yii2-app-basic app` (may require github token)
 + Exit container `exit`
 + Own generated files `sudo chown $USER:$USER -R app`
-+ Restart containers docker-compose restart
++ Restart containers `docker-compose restart`
 + Go to https://localhost:8080 to see Yii start page
 + Change docker-compose.yml and related files to fit your needs
 
