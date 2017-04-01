@@ -1,0 +1,38 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+
+docker-yii2-example-redis:
+  image: phpdockerio/redis:latest
+  container_name: docker-yii2-example-redis
+
+docker-yii2-example-mysql:
+  image: mysql:5.7
+  container_name: docker-yii2-example-mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=rootpass
+    - MYSQL_DATABASE=gallery
+    - MYSQL_USER=yan
+    - MYSQL_PASSWORD=yanpass
+
+docker-yii2-example-webserver:
+  image: phpdockerio/nginx:latest
+  container_name: docker-yii2-example-webserver
+  volumes:
+      - .:/var/www/docker-yii2-example
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  ports:
+   - "8080:80"
+  links:
+   - docker-yii2-example-php-fpm
+
+docker-yii2-example-php-fpm:
+  build: .
+  dockerfile: php-fpm/Dockerfile
+  container_name: docker-yii2-example-php-fpm
+  volumes:
+    - .:/var/www/docker-yii2-example
+    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+  links:
+    - docker-yii2-example-mysql
+    - docker-yii2-example-redis
