@@ -7,5 +7,5 @@ Yii2 + Docker example
 + Install yii2 basic app `docker exec -it docker-yii2-example-php-fpm composer create-project --prefer-dist yiisoft/yii2-app-basic app` (will require github token)
 + Install yii2-redis extension `docker exec -it docker-yii2-example-php-fpm composer -d=app require --prefer-dist yiisoft/yii2-redis`
 + Own generated files `sudo chown $USER:$USER -R app`
-+ Go to https://localhost:8080 to see Yii start page
++ Go to http://localhost:8080 to see Yii start page
 + Change docker-compose.yml and related files to fit your needs
